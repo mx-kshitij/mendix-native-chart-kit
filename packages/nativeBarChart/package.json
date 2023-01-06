@@ -1,8 +1,8 @@
 {
-  "name": "nativelinechart",
-  "widgetName": "NativeLineChart",
+  "name": "nativebarchart",
+  "widgetName": "NativeBarChart",
   "version": "1.0.0",
-  "description": "Line chart from react native chart kit",
+  "description": "Bar chart from react native chart kit",
   "copyright": "© Mendix Technology BV 2022. All rights reserved.",
   "author": "Kshitij Karandikar",
   "engines": {
@@ -28,6 +28,6 @@
     "@types/react-native": "~0.63.52"
   },
   "dependencies": {
-    "react-native-chart-kit": "^6.12.0"
+
   }
 }

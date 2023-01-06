@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <widget
-    id="mendix.nativelinechart.NativeLineChart"
+    id="mendix.nativebarchart.NativeBarChart"
     pluginWidget="true"
     needsEntityContext="true"
     offlineCapable="true"
@@ -9,59 +9,29 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd"
 >
-    <name>Native Line Chart</name>
-    <description>Line chart from react native chart kit</description>
+    <name>Native Bar Chart</name>
+    <description>Bar chart from react native chart kit</description>
     <icon />
     <properties>
         <propertyGroup caption="General">
-            <property key="labelsData" type="datasource" isList="true" required="true">
-                <caption>Labels</caption>
+            <property key="data" type="datasource" isList="true" required="true">
+                <caption>Data source</caption>
                 <description />
             </property>
-            <property key="labelAttribute" type="attribute" required="true" dataSource="labelsData">
-                <caption>Label attribute</caption>
-                <description />
+            <property key="labelAttribute" type="attribute" dataSource="data">
+                <caption>Label</caption>
+                <description>Attribute containing label</description>
+                <attributeTypes>
+                    <attributeType name="String" />
+                </attributeTypes>
+            </property>
+            <property key="valueAttribute" type="attribute" dataSource="data">
+                <caption>Value</caption>
+                <description>Attribute containing value</description>
                 <attributeTypes>
                     <attributeType name="Decimal" />
                     <attributeType name="Integer" />
-                    <attributeType name="Long" />
-                    <attributeType name="String" />
-                    <attributeType name="DateTime" />
                 </attributeTypes>
-            </property>
-            <property key="dataList" type="object" isList="true">
-                <caption>Data</caption>
-                <description />
-                <properties>
-                    <propertyGroup caption="General">
-                        <property key="data" type="datasource" isList="true" required="true">
-                            <caption>Value source</caption>
-                            <description />
-                        </property>
-                        <property key="dataAttribute" type="attribute" required="true" dataSource="data">
-                            <caption>Value attribute</caption>
-                            <description />
-                            <attributeTypes>
-                                <attributeType name="Decimal" />
-                                <attributeType name="Integer" />
-                                <attributeType name="Long" />
-                                <attributeType name="DateTime" />
-                            </attributeTypes>
-                        </property>
-                        <property key="indentifier" type="textTemplate">
-                            <caption>Identifier</caption>
-                            <description>Must be unique for the data set</description>
-                        </property>
-                        <property key="legend" type="textTemplate">
-                            <caption>Legend</caption>
-                            <description />
-                        </property>
-                        <property key="color" type="textTemplate">
-                            <caption>Color</caption>
-                            <description>Set to '#000' if not sure</description>
-                        </property>
-                    </propertyGroup>
-                </properties>
             </property>
         </propertyGroup>
         <propertyGroup caption="Options">
@@ -69,20 +39,8 @@
                 <caption>Show background lines</caption>
                 <description />
             </property>
-            <property key="bezier" type="boolean" defaultValue="false">
-                <caption>Bezier</caption>
-                <description />
-            </property>
             <property key="alwaysShowZero" type="boolean" defaultValue="false">
                 <caption>Always show 0</caption>
-                <description />
-            </property>
-            <property key="showDots" type="boolean" defaultValue="false">
-                <caption>Show dots</caption>
-                <description />
-            </property>
-            <property key="showYAxisInteger" type="boolean" defaultValue="false">
-                <caption>Show integers on y axis</caption>
                 <description />
             </property>
             <property key="showVerticalLabels" type="boolean" defaultValue="true">
@@ -93,9 +51,13 @@
                 <caption>Show vertical labels</caption>
                 <description />
             </property>
-            <property key="segmentCount" type="textTemplate">
-                <caption>Segments</caption>
-                <description>Should be integer (as string) eg. '5' or '8' or '14'</description>
+            <property key="showBarTops" type="boolean" defaultValue="true">
+                <caption>Show bar tops</caption>
+                <description />
+            </property>
+            <property key="showValuesOnTopOfBars" type="boolean" defaultValue="true">
+                <caption>Show values on top of bars</caption>
+                <description />
             </property>
         </propertyGroup>
         <propertyGroup caption="Styling">
@@ -148,7 +110,7 @@
                 </property>
                 <property key="verticalLabelRotation" type="integer" defaultValue="0">
                     <caption>Rotation</caption>
-                    <description/>
+                    <description />
                 </property>
             </propertyGroup>
             <propertyGroup caption="Vertical labels">
@@ -166,7 +128,7 @@
                 </property>
                 <property key="horizontalLabelRotation" type="integer" defaultValue="0">
                     <caption>Rotation</caption>
-                    <description/>
+                    <description />
                 </property>
             </propertyGroup>
             <propertyGroup caption="Background lines">
@@ -179,26 +141,6 @@
                     <description>Set to '1' if not sure</description>
                 </property>
             </propertyGroup>
-        </propertyGroup>
-        <propertyGroup caption="Event">
-            <property key="onSelectAction" type="action">
-                <caption>On click</caption>
-                <description>Action to be performed when a point is selected</description>
-            </property>
-            <property key="selectedDataset" type="attribute" required="false">
-                <caption>Selected dataset</caption>
-                <description>Identifier of the dataset of the selected point is set in this attribute</description>
-                <attributeTypes>
-                    <attributeType name="String" />
-                </attributeTypes>
-            </property>
-            <property key="selectedPointIndex" type="attribute" required="false">
-                <caption>Selected point</caption>
-                <description>Index of the selected point is set in this attribute</description>
-                <attributeTypes>
-                    <attributeType name="Integer" />
-                </attributeTypes>
-            </property>
         </propertyGroup>
     </properties>
 </widget>
